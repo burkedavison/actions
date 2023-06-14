@@ -11,11 +11,11 @@ runs:
       uses: docker://eclipse-temurin:8
       with:
         entrypoint: /bin/bash
-        args: "java -version"
+        args: "-c \"java -version\""
 
     - name: Temurin 17
       #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm:22.3.2
       uses: docker://eclipse-temurin:17
       with:
         entrypoint: /bin/bash
-        args: "java -version"
+        args: "-c \"java -version\""
