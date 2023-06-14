@@ -6,7 +6,7 @@ on:
 name: ci
 jobs:
   use-reusable:
-    uses: ./reusable-workflows/reusable-graalvm.yml
+    uses: ./reusable-workflows/reusable-graalvm.yml@main
     with:
       value: "value"
   build:
