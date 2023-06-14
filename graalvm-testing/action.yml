@@ -1,0 +1,21 @@
+name: "GraalVM Testing"
+description: "Perform GraalVM testing with the given build script."
+inputs:
+  build_script:
+    description: "Relative path to the build script to be used."
+runs:
+  using: 'composite'
+  steps:
+    - name: Temurin 8
+      #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm17:22.3.2
+      uses: docker://eclipse-temurin:8
+      with:
+        entrypoint: /bin/bash
+        args: "-c \"java -version\""
+
+    - name: Temurin 17
+      #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm:22.3.2
+      uses: docker://eclipse-temurin:17
+      with:
+        entrypoint: /bin/bash
+        args: "-c \"java -version\""
