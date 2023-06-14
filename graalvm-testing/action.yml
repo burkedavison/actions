@@ -6,14 +6,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: GraalVM 22.3.2 + Java 17
-      uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm17:22.3.2
+    - name: Temurin 8
+      #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm17:22.3.2
+      uses: docker://eclipse-temurin:8
       with:
-        entrypoint: /bin/echo
-        args: "GraalVM 22.3.2 + Java 17"
+        entrypoint: /bin/bash
+        args: "java -version"
 
-    - name: GraalVM 22.3.2 + Java 11
-      uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm:22.3.2
+    - name: Temurin 17
+      #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm:22.3.2
+      uses: docker://eclipse-temurin:17
       with:
-        entrypoint: /bin/echo
-        args: "GraalVM 22.3.2 + Java 11"
+        entrypoint: /bin/bash
+        args: "java -version"
