@@ -1,0 +1,37 @@
+name: Reusable GraalVM
+
+on:
+  workflow_call:
+    inputs:
+      value:
+        required: true
+        type: string
+
+jobs:
+  composite-graalvm:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./graalvm-testing
+
+  graalvm22:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Temurin 8
+        #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm17:22.3.2
+        uses: docker://eclipse-temurin:8
+        with:
+          entrypoint: /bin/bash
+          args: "-c \"java -version\""
+
+  graalvm23:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Temurin 8
+        #uses: docker://gcr.io/cloud-devrel-kokoro-resources/graalvm17:22.3.2
+        uses: docker://eclipse-temurin:17
+        with:
+          entrypoint: /bin/bash
+          args: "-c \"java -version\""

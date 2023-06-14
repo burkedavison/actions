@@ -5,6 +5,10 @@ on:
   pull_request:
 name: ci
 jobs:
+  use-reusable:
+    uses: ./reusable-workflows/reusable-graalvm.yml
+    with:
+      value: "value"
   build:
     runs-on: ubuntu-22.04
     steps:
